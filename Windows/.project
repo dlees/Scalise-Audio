@@ -21,11 +21,6 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Scalise-Audio/src/Main.java</locationURI>
 		</link>
 		<link>
-			<name>src/Model.java</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Scalise-Audio/src/Model.java</locationURI>
-		</link>
-		<link>
 			<name>src/mediaManager</name>
 			<type>2</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Scalise-Audio/src/mediaManager</locationURI>

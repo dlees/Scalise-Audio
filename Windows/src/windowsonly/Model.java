@@ -1,13 +1,9 @@
-package com.example.simplemusicplayer;
-
+package windowsonly;
 
 import musicplayer.IPlayingSong;
 import playlist.IPlaylist;
 
 import windowsonly.WinPlayingSong;
-
-
-
 
 public class Model
 {
@@ -26,8 +22,7 @@ public class Model
 	
 	protected Model()
 	{
-		player = new AndroidPlayingSong();
-		playlist = new AndroidPlaylist();
+		player = new WinPlayingSong();
 	}
 	
 	public void play_pause()

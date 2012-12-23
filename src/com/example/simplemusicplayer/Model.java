@@ -4,9 +4,6 @@ package com.example.simplemusicplayer;
 import musicplayer.IPlayingSong;
 import playlist.IPlaylist;
 
-import windowsonly.WinPlayingSong;
-
-
 
 
 public class Model

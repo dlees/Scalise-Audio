@@ -3,7 +3,6 @@ package com.example.simplemusicplayer;
 import java.util.ArrayList;
 
 import musicplayer.IPlayingSong;
-import mainmodel.Model;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,8 +30,6 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
-        Model.create_android_model();
         
         buttonPlay = (Button) findViewById(R.id.buttonPlay);
         buttonPause = (Button) findViewById(R.id.buttonPause);
