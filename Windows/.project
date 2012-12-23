@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>ScaliseAudio</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>src/Main.java</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Scalise-Audio/src/Main.java</locationURI>
+		</link>
+		<link>
+			<name>src/Model.java</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Scalise-Audio/src/Model.java</locationURI>
+		</link>
+		<link>
+			<name>src/mediaManager</name>
+			<type>2</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Scalise-Audio/src/mediaManager</locationURI>
+		</link>
+		<link>
+			<name>src/musicplayer</name>
+			<type>2</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Scalise-Audio/src/musicplayer</locationURI>
+		</link>
+		<link>
+			<name>src/playlist</name>
+			<type>2</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Scalise-Audio/src/playlist</locationURI>
+		</link>
+	</linkedResources>
+</projectDescription>
