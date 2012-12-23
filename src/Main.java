@@ -11,8 +11,6 @@ import java.io.File;
 
 import mediaManager.Manager;
 import musicplayer.*;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 
 /*
  * HelloWorldSwing.java requires no other files. 
@@ -36,7 +34,7 @@ class Main
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
  
         //Add the ubiquitous "Hello World" label.
-        JLabel label = new JLabel("Hello World");
+        JLabel label = new JLabel("Hello Ken");
         frame.getContentPane().add(label);
  
         //Display the window.
