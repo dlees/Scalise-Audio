@@ -1,5 +1,5 @@
 package musicplayer;
-
+/*
 import java.io.FileInputStream;
 
 import javazoom.jl.decoder.JavaLayerException;
@@ -116,4 +116,6 @@ public class WinPlayingSong extends PlayingSong
 		// TODO Auto-generated method stub
 		
 	}
+	
 }
+*/
