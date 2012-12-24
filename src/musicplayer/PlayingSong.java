@@ -50,6 +50,8 @@ public abstract class PlayingSong implements IPlayingSong
 			position += cur_time - start_time;
 			long end_sec = position;
 			
+			start_time = cur_time;
+			
 			DB.insert_sec_count(song, start_sec, end_sec);
 		}
 	}
