@@ -1,4 +1,4 @@
-package com.example.simplemusicplayer;
+/*package com.example.simplemusicplayer;
 
 
 import musicplayer.IPlayingSong;
@@ -89,5 +89,5 @@ public class Model
 	
 	
 }
-
+*/
 
