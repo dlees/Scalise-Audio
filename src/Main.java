@@ -36,7 +36,7 @@ class Main
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
  
         //Add the ubiquitous "Hello World" label.
-        JLabel label = new JLabel("Hello Ken");
+        JLabel label = new JLabel("Hello Ken.  Look at DB");
         frame.getContentPane().add(label);
  
         //Display the window.

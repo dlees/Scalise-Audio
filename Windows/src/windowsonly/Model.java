@@ -22,7 +22,7 @@ public class Model
 	
 	protected Model()
 	{
-		player = new WinPlayingSong();
+		player = new WinPlayingSong(new WinTxtDatabase());
 	}
 	
 	public void play_pause()

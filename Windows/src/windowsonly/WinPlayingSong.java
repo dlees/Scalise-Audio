@@ -2,6 +2,8 @@ package windowsonly;
 
 import java.io.FileInputStream;
 
+import database.Database;
+
 import musicplayer.PlayingSong;
 
 import javazoom.jl.decoder.JavaLayerException;
@@ -13,9 +15,9 @@ public class WinPlayingSong extends PlayingSong
 {
 	private Player player = null;
 	
-	public WinPlayingSong() 
+	public WinPlayingSong(Database DB_)
 	{
-		
+		super(DB_);
 	}	
 	
 	@Override

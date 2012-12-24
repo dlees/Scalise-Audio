@@ -2,6 +2,8 @@ package com.example.simplemusicplayer;
 
 import java.io.IOException;
 
+import database.Database;
+
 import musicplayer.PlayingSong;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -10,7 +12,8 @@ public class AndroidPlayingSong extends PlayingSong
 {
 	private MediaPlayer mp;
 	
-	public AndroidPlayingSong() {
+	public AndroidPlayingSong(Database DB_) {
+		super(DB_);
 		mp = new MediaPlayer();
         mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
 	}

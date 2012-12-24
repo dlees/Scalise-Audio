@@ -1,9 +1,14 @@
 package musicplayer;
 
+import database.Database;
+
 public abstract class PlayingSong implements IPlayingSong
 {
-	public PlayingSong()
-	{}
+	private Database DB;
+	public PlayingSong(Database DB_)
+	{
+		DB = DB_;
+	}
 	
 	
 	// throws an Error if can't play the song
@@ -14,7 +19,7 @@ public abstract class PlayingSong implements IPlayingSong
 		
 		play_song();
 		
-		//start_time = get_time();
+		start_time = get_time();
 		
 		paused = false;
 		
@@ -34,32 +39,27 @@ public abstract class PlayingSong implements IPlayingSong
 	// prints second count to the file
 	protected void update_position()
 	{
-//			time_t cur_time = get_time();
+		long cur_time = get_time();
 
 		// don't update if it's paused, there is no song, 
 		// or it hasn't been a second yet
-//		if (!paused && song != L"" && cur_time - start_time > 0)
+		// this logic should be changed to the oposite way! 381!
+		if (!paused && song != "" && cur_time - start_time > 1000)
 		{
-//			foutSCount << song << '\n' 
-//				<< position << '\t';
-
-//			position += cur_time - start_time;
+			long start_sec = position;
+			position += cur_time - start_time;
+			long end_sec = position;
 			
-//			start_time = get_time;
-			
-//			foutSCount << position << '\n'
-//				<< ctime(&cur_time) 
-//				<< "|~|" << endl;		
+			DB.insert_sec_count(song, start_sec, end_sec);
 		}
 	}
 
 	// This should be used to get the position, but not update count
-	protected int get_position()
+	protected long get_position()
 	{
-	//	time_t cur_time = get_time();
+		long cur_time = get_time();
 		
-	//	return position + cur_time - start_time;
-		return 0;
+		return position + cur_time - start_time;
 	}
 	
 	public void replace_song(String filename)
@@ -108,7 +108,8 @@ public abstract class PlayingSong implements IPlayingSong
 	
 	public void change_pos_relative(int relative_pos)
 	{
-		change_position(get_position() + relative_pos);
+		// watch this!!! We might want to insert longs and change those..
+		change_position((int)(get_position()*1000) + relative_pos);
 	}
 
 	public void set_hs()
@@ -199,15 +200,18 @@ public abstract class PlayingSong implements IPlayingSong
 	//	0 = no sound, 100 = max loudness
 	abstract public int get_volume_percent();
 	
-//	abstract public Time get_time();
-	// to do this, need to know Time in Java and Time in Android?
+	public long get_time()
+	{
+		return System.currentTimeMillis();
+		
+	}
 	
 // PRIVATE DATA	
 	private String song = ""; // filename
 	private boolean paused = true;	// true if the song is paused
 	private float totalDuration = 0.0f; // total length of the song in secs
 	private int position = 0;	// position in the song
-//	time_t start_time; // time the song started playing last
+	long start_time; // time the song started playing last
 	
 	
 	
