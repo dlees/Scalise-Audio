@@ -7,14 +7,20 @@ import java.util.ArrayList;
 import android.util.Log;
 
 public class ReadSongs {
-	final String MEDIA_PATH = new String("/sdcard/Music");
+	final String SDCARD_MUSIC_PATH = "/sdcard/Music";
+	
+	private String mediaPath;
+	//final String MEDIA_PATH = new String("/sdcard/Music");
 	private ArrayList<String> songList = new ArrayList<String>();
 	
 	public ReadSongs() {
-		
+		this.mediaPath = SDCARD_MUSIC_PATH;
+	}
+	public ReadSongs(String mediaPath) {
+		this.mediaPath = mediaPath;
 	}
 	public ArrayList<String> getPlayList() {
-		File homeDirectory = new File(MEDIA_PATH);
+		File homeDirectory = new File(mediaPath);
 		
 		for(File file : homeDirectory.listFiles(new FileExtensionFilter())) {
 			String song = new String(file.getPath());

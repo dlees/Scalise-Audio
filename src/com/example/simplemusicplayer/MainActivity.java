@@ -20,6 +20,8 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
+	
+	//I just inserted this comment to make sure it pushed
 //	private ArrayList<String> songList = new ArrayList<String>();
 //	private ReadSongs readSong;
 	//List (interface) = ArrayList (impl)
@@ -146,13 +148,6 @@ public class MainActivity extends Activity {
         //c.close();
         mDbHelper.close();
         
-       // String[] from = new String[] { NotesDbAdapter.KEY_TITLE };
-        //int[] to = new int[] { R.id.text1 };
-        
-        // Now create an array adapter and set it to display using our row
-        //SimpleCursorAdapter notes =
-          //  new SimpleCursorAdapter(this, R.layout.notes_row, c, from, to);
-        //setListAdapter(notes);
     }
     
 }
