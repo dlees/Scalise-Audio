@@ -41,10 +41,10 @@ public class Record implements Composite
 		return title;
 	}
 	
-	public void set_rating(int rate) throws Exception
+	public void set_rating(int rate) throws Error
 	{
 		if (rate > max_rating_c || rate < min_rating_c)
-			throw new Exception("Rating out of range!");
+			throw new Error("Rating out of range!");
 			
 		rating = rate;
 	}

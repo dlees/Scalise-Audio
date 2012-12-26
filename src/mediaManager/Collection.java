@@ -15,10 +15,10 @@ public class Collection implements Composite
 		members = new ArrayList<Composite>();
 	}
 	
-	public void add(Composite e) throws Exception
+	public void add(Composite e) throws Error
 	{
 		if (is_present(e))
-			throw new Exception(name + " already has a record with that title!");
+			throw new Error(name + " already has a record with that title!");
 
 		members.add(e);
 	}
@@ -28,10 +28,10 @@ public class Collection implements Composite
 		return members.contains(e);
 	}
 	
-	public void remove(Composite e) throws Exception
+	public void remove(Composite e) throws Error
 	{
 		if (!is_present(e))
-			throw new Exception(name + " does not contain a record with that title!");
+			throw new Error(name + " does not contain a record with that title!");
 
 		members.remove(e);
 	}
