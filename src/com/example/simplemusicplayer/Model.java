@@ -3,6 +3,9 @@ package com.example.simplemusicplayer;
 
 import musicplayer.IPlayingSong;
 import playlist.IPlaylist;
+import android.content.Context;
+import android.database.SQLException;
+import android.util.Log;
 
 
 
@@ -10,8 +13,11 @@ public class Model
 {
 	protected IPlayingSong player;
 	protected IPlaylist playlist;	
-	
+	protected AndroidDatabase database;
 	private static Model instance = null;
+	
+	protected static Context mContext;
+	
 	
 	public static Model get()
 	{
@@ -21,10 +27,28 @@ public class Model
 		return instance;
 	}
 	
+	public static Model get(Context context)
+	{
+		if (instance == null) {
+			mContext = context;
+			instance = new Model();
+			
+		}
+		return instance;
+	}
 	protected Model()
 	{
-		player = new AndroidPlayingSong();
+		database = new AndroidDatabase(mContext);
+		try {
+			database.open();	
+		} catch(SQLException e) {
+			e.printStackTrace();
+			Log.e("Model", "Error in open");
+		}
+		
+		player = new AndroidPlayingSong(database);
 		playlist = new AndroidPlaylist();
+		
 	}
 	
 	public void play_pause()
