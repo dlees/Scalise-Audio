@@ -26,6 +26,8 @@ import javax.swing.*;
      */
 
 
+import mainmodel.Model;
+
 class Main
 {
 	
@@ -56,7 +58,7 @@ class Main
         
 		try
 		{
-	//		Model.get().play_new("C:\\Users\\Akira\\Music\\No Doubt - You Can Do It.mp3");
+		//	Model.get().play_new("C:\\Users\\Akira\\Music\\No Doubt - You Can Do It.mp3");
 	//		Model.get().play_pause();
 		
 			

@@ -21,5 +21,5 @@ public interface Database {
 	 * 	|~|
 	 */
 	
-	void insert_sec_count(String filename, int start_sec, int end_sec);
+	void insert_sec_count(String filename, long start_sec, long end_sec);
 }

@@ -1,58 +1,45 @@
 package mainmodel;
 
 
-import com.example.simplemusicplayer.AndroidDatabase;
-import com.example.simplemusicplayer.AndroidPlayingSong;
-import com.example.simplemusicplayer.AndroidPlaylist;
+import database.Database;
 
 import musicplayer.IPlayingSong;
 import playlist.IPlaylist;
-import android.content.Context;
-import android.database.SQLException;
-import android.util.Log;
-
 
 
 public class Model
 {
 	protected IPlayingSong player;
 	protected IPlaylist playlist;	
-	protected AndroidDatabase database;
-	private static Model instance = null;
+	protected Database database;
 	
-	protected static Context mContext;
+	private static Model instance = null;
 	
 	
 	public static Model get()
 	{
 		if (instance == null)
-			instance = new Model();
+			throw new Error("Model Not Created Yet");
 		
 		return instance;
 	}
 	
-	public static Model get(Context context)
+	public static void create(IPlayingSong ps, IPlaylist pl, Database db)
 	{
-		if (instance == null) {
-			mContext = context;
-			instance = new Model();
-			
+		if (instance != null) {
+			throw new Error("Model Already Created");
 		}
-		return instance;
+		
+		instance = new Model(ps, pl, db);
 	}
-	protected Model()
+	
+	protected Model(IPlayingSong ps, IPlaylist pl, Database db)
 	{
-		database = new AndroidDatabase(mContext);
-		try {
-			database.open();	
-		} catch(SQLException e) {
-			e.printStackTrace();
-			Log.e("Model", "Error in open");
-		}
+		database = db;
 		
-		player = new AndroidPlayingSong(database);
-		playlist = new AndroidPlaylist();
+		player = ps;
 		
+		playlist = pl;		
 	}
 	
 	public void play_pause()
