@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 
 
+import mainmodel.Model;
 import musicplayer.IPlayingSong;
 import android.app.Activity;
 import android.database.Cursor;
