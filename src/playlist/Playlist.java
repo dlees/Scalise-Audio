@@ -91,6 +91,11 @@ public class Playlist implements IPlaylist
 		save(name);		
 	}
 	
+	public final List<String> get_list()
+	{
+		return playlist;		
+	}
+	
 	private String name;
 
 	private int curSong = -1; 

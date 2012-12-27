@@ -3,9 +3,10 @@ package mainmodel;
 
 import database.Database;
 
+import mediaManager.Manager;
+import mediaManager.Record;
 import musicplayer.IPlayingSong;
 import playlist.IPlaylist;
-
 
 public class Model
 {
@@ -15,6 +16,7 @@ public class Model
 	
 	private static Model instance = null;
 	
+	private Manager media;
 	
 	public static Model get()
 	{
@@ -39,7 +41,18 @@ public class Model
 		
 		player = ps;
 		
-		playlist = pl;		
+		playlist = pl;	
+		convert_playlist();
+	}
+	
+	private void convert_playlist()
+	{
+		for (String song : playlist.get_list())
+		{
+			try {
+				media.add_record(song, song);
+			} catch(Error e){}
+		}
 	}
 	
 	public void play_pause()
@@ -51,10 +64,16 @@ public class Model
 			player.pause();
 		
 	}
-	
+		
 	public void play_new(String filename)
 	{
-		player.replace_song(filename);
+		// add the song to the media player 
+		// unless its already in there
+		try {
+			media.add_record(filename, filename);
+		}catch(Error e){}
+		
+		player.replace_song(media.find_record(filename));
 		
 		player.play();
 		
@@ -65,18 +84,17 @@ public class Model
 	{
 		playlist.goto_first();
 
-		player.replace_song(playlist.next());
+		
+		player.replace_song(media.find_record(playlist.next()));
 
 		player.play();
 					
 	//	cursong = playlist->current();
 	}
 
-
-
 	public void prev()
 	{
-		player.replace_song(playlist.prev());
+		player.replace_song(media.find_record(playlist.prev()));
 	
 		player.play();
 	
@@ -86,12 +104,23 @@ public class Model
 
 	public void next()
 	{			
-		player.replace_song(playlist.next());
+		player.replace_song(media.find_record(playlist.next()));
 										
 		player.play();
 						
 //		cursong = playlist->current();					
 	}
+	
+	public void next_hotspot()
+	{
+		player.next_hs();
+	}
+	
+	public void prev_hotspot()
+	{
+		player.prev_hs();		
+	}
+	
 	
 	public void close()
 	{

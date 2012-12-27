@@ -1,5 +1,6 @@
 package musicplayer;
 
+import mediaManager.Record;
 import database.Database;
 
 public abstract class PlayingSong implements IPlayingSong
@@ -44,7 +45,7 @@ public abstract class PlayingSong implements IPlayingSong
 		// don't update if it's paused, there is no song, 
 		// or it hasn't been a second yet
 		// this logic should be changed to the oposite way! 381!
-		if (!paused && song != "" && cur_time - start_time > 1000)
+		if (!paused && song_exists() && cur_time - start_time > 1000)
 		{
 			long start_sec = position;
 			position += cur_time - start_time;
@@ -52,7 +53,7 @@ public abstract class PlayingSong implements IPlayingSong
 			
 			start_time = cur_time;
 			
-			DB.insert_sec_count(song, start_sec, end_sec);
+			DB.insert_sec_count(song.get_main_filename(), start_sec, end_sec);
 		}
 	}
 
@@ -64,7 +65,7 @@ public abstract class PlayingSong implements IPlayingSong
 		return position + cur_time - start_time;
 	}
 	
-	public void replace_song(String filename)
+	public void replace_song(Record song_)
 	{
 		if (song_exists())
 		{
@@ -72,20 +73,20 @@ public abstract class PlayingSong implements IPlayingSong
 			remove_song();
 		}
 		
-		add_song(filename);
+		add_song(song_);
 	}
 		
 	private boolean song_exists()
 	{
-		return song != "";
+		return song != null;
 	}
 
 
-	private void add_song(String filename)
+	private void add_song(Record song_)
 	{
-		song = filename;
+		song = song_;
 		
-		set_song(filename);
+		set_song(song.get_main_filename());
 		
 		totalDuration = get_duration();
 
@@ -162,7 +163,7 @@ public abstract class PlayingSong implements IPlayingSong
 		change_volume(percent);
 	}
 	
-	public String get_cur_song()
+	public Record get_cur_song()
 	{
 		return song;		
 	}
@@ -209,7 +210,7 @@ public abstract class PlayingSong implements IPlayingSong
 	}
 	
 // PRIVATE DATA	
-	private String song = ""; // filename
+	private Record song = null; // filename
 	private boolean paused = true;	// true if the song is paused
 	private float totalDuration = 0.0f; // total length of the song in secs
 	private int position = 0;	// position in the song

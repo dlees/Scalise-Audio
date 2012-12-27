@@ -1,17 +1,19 @@
 package musicplayer;
 
+import mediaManager.Record;
+
 public interface IPlayingSong
 {
-	String get_cur_song();
+	Record get_cur_song();
 	
 	// throws an Error if cant play the song
 	void play();
 
 	void pause();
 
-	// changes the curSong to the song stored at filename
+	// changes the curSong to the song
 	// does not play
-	void replace_song(String filename);
+	void replace_song(Record song);
 
 	// throws error if past total duration
 	void change_position(int new_pos);

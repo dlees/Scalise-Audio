@@ -1,6 +1,8 @@
 
 package playlist;
 
+import java.util.List;
+
 public interface IPlaylist
 {
 	// return next song and move index
@@ -25,6 +27,8 @@ public interface IPlaylist
 	void shift_right();
 
 	void remove_cur();
+	
+	List<String> get_list();
 	
 	void close();
 }
