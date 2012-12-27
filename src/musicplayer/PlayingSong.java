@@ -1,6 +1,6 @@
 package musicplayer;
 
-import mediaManager.Record;
+//import mediaManager.String;
 import database.Database;
 
 public abstract class PlayingSong implements IPlayingSong
@@ -53,7 +53,7 @@ public abstract class PlayingSong implements IPlayingSong
 			
 			start_time = cur_time;
 			
-			DB.insert_sec_count(song.get_main_filename(), start_sec, end_sec);
+			DB.insert_sec_count(song, start_sec, end_sec);
 		}
 	}
 
@@ -65,7 +65,7 @@ public abstract class PlayingSong implements IPlayingSong
 		return position + cur_time - start_time;
 	}
 	
-	public void replace_song(Record song_)
+	public void replace_song(String song_)
 	{
 		if (song_exists())
 		{
@@ -82,11 +82,11 @@ public abstract class PlayingSong implements IPlayingSong
 	}
 
 
-	private void add_song(Record song_)
+	private void add_song(String song_)
 	{
 		song = song_;
 		
-		set_song(song.get_main_filename());
+		set_song(song);//.get_main_filename());
 		
 		totalDuration = get_duration();
 
@@ -163,7 +163,7 @@ public abstract class PlayingSong implements IPlayingSong
 		change_volume(percent);
 	}
 	
-	public Record get_cur_song()
+	public String get_cur_song()
 	{
 		return song;		
 	}
@@ -196,7 +196,7 @@ public abstract class PlayingSong implements IPlayingSong
 	// don't check if past total length of song
 	abstract protected void move_to(int new_pos);
 	
-	// changes the volume, needs to be recorded in derived class
+	// changes the volume, needs to be Stringed in derived class
 	abstract protected void change_volume(int percent);
 	
 	// gets how loud the player is playing at (0-100)
@@ -210,7 +210,7 @@ public abstract class PlayingSong implements IPlayingSong
 	}
 	
 // PRIVATE DATA	
-	private Record song = null; // filename
+	private String song = null; // filename
 	private boolean paused = true;	// true if the song is paused
 	private float totalDuration = 0.0f; // total length of the song in secs
 	private int position = 0;	// position in the song

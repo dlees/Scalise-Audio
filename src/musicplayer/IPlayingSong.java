@@ -4,7 +4,7 @@ import mediaManager.Record;
 
 public interface IPlayingSong
 {
-	Record get_cur_song();
+	String get_cur_song();
 	
 	// throws an Error if cant play the song
 	void play();
@@ -13,7 +13,7 @@ public interface IPlayingSong
 
 	// changes the curSong to the song
 	// does not play
-	void replace_song(Record song);
+	void replace_song(String string);
 
 	// throws error if past total duration
 	void change_position(int new_pos);
