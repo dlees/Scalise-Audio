@@ -2,6 +2,9 @@ package com.example.simplemusicplayer;
 
 import java.util.ArrayList;
 
+import playlist.IPlaylist;
+import database.Database;
+
 
 
 
@@ -37,10 +40,20 @@ public class MainActivity extends Activity {
 	private Button buttonNext;
 	private Button buttonDB;
 	
+	private Database db;
+    private IPlayingSong ps;
+    private IPlaylist pl; 
+	
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        db = new AndroidDatabase(this);
+        ps = new AndroidPlayingSong(db);
+        pl = new AndroidPlaylist();
+        
 //      AndroidDatabase database = new AndroidDatabase(this);    
  //     database.open();
         textDatabaseContents = (TextView) findViewById(R.id.textDatabaseContents);
@@ -88,15 +101,18 @@ public class MainActivity extends Activity {
     public void play_song() {
     	Log.d("MainActivity", "Called play song");
     	
-    	Model.get(this).first();
+    	Model.create(ps, pl, db);
+    	Model.get().first();
     }
     public void pause_song() {
-    	Model.get(this).play_pause();
+    	Model.create(ps, pl, db);
+    	Model.get().play_pause();
     	
     	
     }
     public void playNext() {
-    	Model.get(this).next();
+    	Model.create(ps, pl, db);
+    	Model.get().next();
     }
     
     @Override
@@ -109,7 +125,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onDestroy() {
     	super.onDestroy();
-    	Model.get(this).close();
+    	Model.get().close();
     }
     
     private void fillDataText() {

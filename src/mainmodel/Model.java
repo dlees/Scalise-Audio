@@ -1,12 +1,11 @@
 package mainmodel;
 
 
-import database.Database;
-
 import mediaManager.Manager;
-import mediaManager.Record;
 import musicplayer.IPlayingSong;
 import playlist.IPlaylist;
+import android.util.Log;
+import database.Database;
 
 public class Model
 {
@@ -51,7 +50,10 @@ public class Model
 		{
 			try {
 				media.add_record(song, song);
-			} catch(Error e){}
+			} catch(Error e){
+				Log.e("Model", "Problem in convert Playlist");
+				e.printStackTrace();			
+			}
 		}
 	}
 	
