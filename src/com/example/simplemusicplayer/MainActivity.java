@@ -53,6 +53,7 @@ public class MainActivity extends Activity {
         db = new AndroidDatabase(this);
         ps = new AndroidPlayingSong(db);
         pl = new AndroidPlaylist();
+    	Model.create(ps, pl, db);
         
 //      AndroidDatabase database = new AndroidDatabase(this);    
  //     database.open();
@@ -101,17 +102,14 @@ public class MainActivity extends Activity {
     public void play_song() {
     	Log.d("MainActivity", "Called play song");
     	
-    	Model.create(ps, pl, db);
     	Model.get().first();
     }
     public void pause_song() {
-    	Model.create(ps, pl, db);
     	Model.get().play_pause();
     	
     	
     }
     public void playNext() {
-    	Model.create(ps, pl, db);
     	Model.get().next();
     }
     
