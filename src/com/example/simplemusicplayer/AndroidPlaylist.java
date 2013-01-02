@@ -1,12 +1,13 @@
 package com.example.simplemusicplayer;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import playlist.Playlist;
 import android.util.Log;
 
 public class AndroidPlaylist extends Playlist {
-	private ArrayList<String> songList = new ArrayList<String>();
+	private List<String> songList = new ArrayList<String>();
 	private ReadSongs readSong;
 	
 	public AndroidPlaylist() {
@@ -22,5 +23,9 @@ public class AndroidPlaylist extends Playlist {
 			append(song);
 		}
 		
+	}
+	@Override
+	public List<String> get_list() {
+		return songList;
 	}
 }

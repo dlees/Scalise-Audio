@@ -90,8 +90,8 @@ public class Playlist implements IPlaylist
 	{
 		save(name);		
 	}
-	
-	public final List<String> get_list()
+	//I removed final. Why
+	public List<String> get_list()
 	{
 		return playlist;		
 	}

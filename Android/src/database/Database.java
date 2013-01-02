@@ -24,4 +24,6 @@ public interface Database {
 	
 	//void insert_sec_count(String filename, long start_sec, long end_sec);
 	void insert_sec_count(String filename, long start_sec, long end_sec);
+
+	
 }

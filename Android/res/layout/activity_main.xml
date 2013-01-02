@@ -19,26 +19,35 @@
         android:layout_alignLeft="@+id/buttonPlay"
         android:layout_below="@+id/buttonPlay"
         android:text="Next" />
-
+    <Button
+        android:id="@+id/buttonPrev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonPlay"
+        android:layout_below="@+id/buttonNext"
+        android:text="Prev" />
     <Button
         android:id="@+id/buttonPause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/buttonNext"
-        android:layout_below="@+id/buttonNext"
+        android:layout_alignLeft="@+id/buttonPlay"
+        android:layout_below="@+id/buttonPrev"
         android:text="Pause" />
-            <Button
+    
+    <Button
         android:id="@+id/buttonDB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/buttonPause"
         android:text="DB" />
+
     <ScrollView
 
     android:id="@+id/scrollview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_below="@id/buttonDB"
+  
     android:paddingBottom ="20dp" 
      >
     <TextView
@@ -48,11 +57,18 @@
 
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="30dp"
-        android:text="TextView"
         android:maxLines = "40"
-android:scrollbars = "vertical"
-/>
+	android:scrollbars = "vertical"
+	/>
     </ScrollView>
 
+    <ListView
+        android:id="@+id/listSongs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonDB"
+        android:layout_centerHorizontal="true" >
+
+    </ListView>
 
 </RelativeLayout>

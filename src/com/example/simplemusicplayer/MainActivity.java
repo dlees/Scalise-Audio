@@ -1,26 +1,16 @@
 package com.example.simplemusicplayer;
 
-import java.util.ArrayList;
-
-import playlist.IPlaylist;
-import database.Database;
-
-
-
-
-
 import mainmodel.Model;
 import musicplayer.IPlayingSong;
+import playlist.IPlaylist;
 import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ScrollView;
-import android.widget.SimpleCursorAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -38,9 +28,11 @@ public class MainActivity extends Activity {
 	//private Button buttonVolume;
 	//private TextView textSongTitle;
 	private Button buttonNext;
+	private Button buttonPrev;
 	private Button buttonDB;
+	//private ListView listSongs;
 	
-	private Database db;
+	private AndroidDatabase db;
     private IPlayingSong ps;
     private IPlaylist pl; 
 	
@@ -51,17 +43,23 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         
         db = new AndroidDatabase(this);
+        
         ps = new AndroidPlayingSong(db);
         pl = new AndroidPlaylist();
-    	Model.create(ps, pl, db);
+        db.open();
+        Model.create(ps, pl, db);
         
 //      AndroidDatabase database = new AndroidDatabase(this);    
  //     database.open();
+        //listSongs = getListView();
+		//listSongs.setTextFilterEnabled(true);
+		
         textDatabaseContents = (TextView) findViewById(R.id.textDatabaseContents);
         buttonPlay = (Button) findViewById(R.id.buttonPlay);
         buttonDB = (Button) findViewById(R.id.buttonDB);
         buttonPause = (Button) findViewById(R.id.buttonPause);
         buttonNext = (Button) findViewById(R.id.buttonNext);
+        buttonPrev = (Button) findViewById(R.id.buttonPrev);
         buttonPlay.setOnClickListener(new View.OnClickListener() {
            public void onClick(View v) {
                // Perform action on click
@@ -77,6 +75,12 @@ public class MainActivity extends Activity {
         buttonNext.setOnClickListener(new View.OnClickListener() {
         	public void onClick(View v) {
         		playNext();
+        	}
+        });
+        buttonPrev.setOnClickListener(new View.OnClickListener(){
+        	public void onClick(View v)
+        	{
+        		playPrev();
         	}
         });
         buttonDB.setOnClickListener(new View.OnClickListener() {
@@ -112,7 +116,9 @@ public class MainActivity extends Activity {
     public void playNext() {
     	Model.get().next();
     }
-    
+    public void playPrev() {
+    	Model.get().prev();
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
