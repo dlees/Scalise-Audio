@@ -85,7 +85,7 @@ public class MainActivity extends Activity {
         buttonPause = (Button) findViewById(R.id.buttonPause);
         buttonNext = (Button) findViewById(R.id.buttonNext);
         buttonPrev = (Button) findViewById(R.id.buttonPrev);
-       // buttonPort = (Button) findViewById(R.id.buttonPort);
+        buttonPort = (Button) findViewById(R.id.buttonPort);
         
         buttonPlay.setOnClickListener(new View.OnClickListener() {
            public void onClick(View v) {
@@ -110,12 +110,14 @@ public class MainActivity extends Activity {
         		playPrev();
         	}
         });
-        /*buttonDB.setOnClickListener(new View.OnClickListener() {
+        /*
+        buttonDB.setOnClickListener(new View.OnClickListener() {
         	public void onClick(View v) {
-        		 //fillDataText();
+        		 fillDataText();
         	}
         });
         */
+		
        buttonDB.setOnClickListener(new View.OnClickListener() {
     	   public void onClick(View v) {
     		
@@ -133,6 +135,7 @@ public class MainActivity extends Activity {
               
     //    playlist = new AndroidPlaylist();
         
+		
     }
     
     public void play_song() {
@@ -177,7 +180,7 @@ public class MainActivity extends Activity {
     	StringBuilder str = new StringBuilder();
     	str.append("\nBREAK");
     	//while(!c.isBeforeFirst()) {
-    		
+    	
     	while(!c.isLast()) {
         	//str.append("\n\nIndex: ");
         	//str.append(c.getInt(c.getColumnIndexOrThrow(AndroidDatabase.COLUMN_ID)));
