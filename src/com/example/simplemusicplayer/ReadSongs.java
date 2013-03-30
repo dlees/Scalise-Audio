@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import android.util.Log;
 
 public class ReadSongs {
-	final String SDCARD_MUSIC_PATH = "/sdcard/Music";
+	final static String SDCARD_MUSIC_PATH = "/sdcard/Music";
 	
 	private String mediaPath;
 	//final String MEDIA_PATH = new String("/sdcard/Music");

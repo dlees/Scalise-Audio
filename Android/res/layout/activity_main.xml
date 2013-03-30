@@ -40,7 +40,24 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/buttonPause"
         android:text="DB" />
-
+    <Button
+        android:id="@+id/buttonPort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonPlay"
+        android:layout_below="@+id/buttonDB"
+        android:text="Port to textfile" />
+    
+	<ListView
+	     android:id="@+id/listviewDB"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/buttonPort"
+android:visibility="gone"  
+    android:paddingBottom ="20dp" 
+     />
+	    
+<!--
     <ScrollView
 
     android:id="@+id/scrollview"
@@ -61,14 +78,14 @@
 	android:scrollbars = "vertical"
 	/>
     </ScrollView>
-
+-->
     <ListView
         android:id="@+id/listSongs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/buttonDB"
-        android:layout_centerHorizontal="true" >
-
+        android:layout_centerHorizontal="true" 
+        >
     </ListView>
 
 </RelativeLayout>
